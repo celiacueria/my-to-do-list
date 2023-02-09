@@ -1,4 +1,5 @@
 <h1>To Do List </h1>
+<img src="./src/img/Desktop - 1 (2).png">
 <h2>Introducción</h2>
 <p>Este proyecto ha sido creado por Celia Cueria Barcia, alumna de Factoria F5. El objetivo es anotar tareas,
 poder editarlas, marcarlas como realizadas y poder borrarlas también.</p>

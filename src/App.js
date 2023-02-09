@@ -1,49 +1,49 @@
 import "./App.css";
-import { Formulario } from "./components/Formulario";
+import { Form } from "./components/Form";
 import { useState } from "react";
-import { Tarea } from "./components/Tarea";
+import { Task } from "./components/Task";
 
 function App() {
   
-  const [tarea, setTarea] = useState("");
-  const [listadoTareas, setListadoTareas] = useState([]);
+  const [task, setTask] = useState("");
+  const [taskList, setTaskList] = useState([]);
 
   function handleSubmit(e) {
-    //Qué no lo ejecute default
     e.preventDefault();
-    if (tarea === "") {
+    if (task === "") {
       alert("Debes rellenar la tarea");
       return;
     }
    
 
-    const nuevaTarea = {
-      id: Date.now(),
-      tarea: tarea,
+    const newTask = {
+      id: task.length,
+      task: task,
       completado: false,
     };
 
-    const temp = [nuevaTarea, ...listadoTareas];
-    setListadoTareas(temp);
-    setTarea("");
+    const temp = [newTask, ...taskList];
+    setTaskList(temp);
+    setTask("");
   }
 
   function handleChange(e) {
-    setTarea(e.target.value);
-    console.log(tarea);
+    setTask(e.target.value);
+    console.log(task);
   }
 
-  function onActualizarTarea(objEditarTarea) {
-    const { id, tarea } = objEditarTarea;
-    const temp = [...listadoTareas];
+  function onUpdateTask(objEditTask) {
+    const { id, task } = objEditTask;
+    const temp = [...taskList];
     const elemento = temp.find((item) => item.id === id);
-    elemento.tarea = tarea;
-    setListadoTareas(temp);
+    elemento.task = task;
+    
+    setTaskList(temp);
   }
 
-  function onBorrarTarea(id) {
-    const temp = listadoTareas.filter((item) => item.id !== id);
-    setListadoTareas(temp);
+  function onDeleteTask(id) {
+    const temp = taskList.filter((item) => item.id !== id);
+    setTaskList(temp);
   }
 
   return (
@@ -51,8 +51,8 @@ function App() {
       <div className="global-container">
         <h1>To do list</h1>
         <div className="input-container">
-          <Formulario
-            tarea={tarea}
+          <Form
+            task={task}
             handleSubmit={handleSubmit}
             handleChange={handleChange}
           />
@@ -61,13 +61,13 @@ function App() {
         <div className="container-task">
          
           <div className="container-info-tasks">
-            {listadoTareas.map((tarea) => (
-              <Tarea
-                key={tarea.id}
-                id={tarea.id}
-                tarea={tarea}
-                onActualizarTarea={onActualizarTarea}
-                onBorrarTarea={onBorrarTarea}
+            {taskList.map((task) => (
+              <Task
+                key={task.id}
+                id={task.id}
+                task={task}
+                onUpdateTask={onUpdateTask}
+                onDeleteTask={onDeleteTask}
               />
             ))}
           </div>
