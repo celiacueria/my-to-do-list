@@ -1,6 +1,5 @@
 body{
   font-family: 'Quicksand', sans-serif;
-  /* background-color: #ebc7e6a0; */
   background-image: url("../src/img/fondo.gif");
 }
 h1{
@@ -72,6 +71,6 @@ input{
 
 
 
-.spanSubrayada{
+.completed{
   text-decoration: line-through;
 }

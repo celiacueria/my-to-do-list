@@ -4,13 +4,16 @@ import deleteIcon from "../img/cerrar.png";
 import save from "../img/disquete.png";
 
 export function Task(props){
-    const {task, onUpdateTask, onDeleteTask} = props //Lo que recibe de App
+
+    const {task, onUpdateTask, onDeleteTask} = props 
+
     const [edit, setEdit] = useState(false);
+
     const  [isCompleted, setIsCompleted] = useState(false);
     
 
     function ActiveEdition(){
-
+        //Sera el valor que cambiaremos
         const [value, setValue] = useState(task.task);
 
         function handleChange(e){
@@ -39,7 +42,7 @@ export function Task(props){
 
                 <img src={save} className="edit-button"
                 onClick={handleClick} alt="edit"  />
-                 
+                
 
                 <img src={deleteIcon} className="edit-button"
                 onClick={() => onDeleteTask(task.id)} alt="delete" />
@@ -54,8 +57,9 @@ export function Task(props){
             <>
              <span
              className={
-                isCompleted ? "todoTarea spanSubrayada" : "todoTarea"
+                isCompleted ? " completed" : "incompleted"
              }
+
              onClick={() => setIsCompleted(!isCompleted)}>{task.task}</span>
             <img src={update} alt="save" className="edit-button"
             onClick={() => setEdit(true)} />
@@ -71,7 +75,9 @@ export function Task(props){
 
     }
    
+
         return(
+
             <>
            <div className="tarea-container" id={task.id}>
            {

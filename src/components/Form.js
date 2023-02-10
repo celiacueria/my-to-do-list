@@ -4,7 +4,7 @@ export function Form(props){
     const  {task, handleSubmit, handleChange} = props
     
     return(
-        <form >
+        <form onSubmit={handleSubmit}>
             <input
             
                 type="text"

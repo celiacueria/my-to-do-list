@@ -14,15 +14,18 @@ function App() {
       alert("Debes rellenar la tarea");
       return;
     }
-   
 
     const newTask = {
-      id: task.length,
+      id: taskList.length,
       task: task,
       completado: false,
     };
 
+    console.log(task.length)
+
+    
     const temp = [newTask, ...taskList];
+
     setTaskList(temp);
     setTask("");
   }
@@ -33,6 +36,8 @@ function App() {
   }
 
   function onUpdateTask(objEditTask) {
+
+    
     const { id, task } = objEditTask;
     const temp = [...taskList];
     const elemento = temp.find((item) => item.id === id);
@@ -59,8 +64,8 @@ function App() {
         </div>
 
         <div className="container-task">
-         
           <div className="container-info-tasks">
+          
             {taskList.map((task) => (
               <Task
                 key={task.id}
